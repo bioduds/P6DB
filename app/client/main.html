@@ -1,0 +1,136 @@
+<head>
+  <title>P6DB</title>
+  <!-- Try to load from cdn to exclude path issues. -->
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script>
+     window.jQuery = window.$ = jQuery;
+     $(document).ready(function() { console.log( "jQuery is loaded" ); });
+  </script>
+</head>
+
+<body>
+  <h1>Welcome to P6DB!</h1>
+  {{> menu}}
+  {{> hello}}
+  {{> create}}
+</body>
+
+<template name="menu" >
+  <nav class="uk-navbar" >
+    <ul class="uk-navbar-nav" >
+      <li><a href="#">Databases</a></li>
+      <li><a href="">Item</a></li>
+      <li data-uk-dropdown="" class="uk-parent">
+        <a href="">Parent</a>
+        <div class="uk-dropdown uk-dropdown-navbar" style="">
+          <ul class="uk-nav uk-nav-navbar">
+            <li><a href="#">Item</a></li>
+            <li><a href="#">Another item</a></li>
+            <li class="uk-nav-header">Header</li>
+            <li><a href="#">Item</a></li>
+            <li><a href="#">Another item</a></li>
+            <li class="uk-nav-divider"></li>
+            <li><a href="#">Separated item</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <div class="uk-navbar-flip">
+      <ul class="uk-navbar-nav">
+        <li data-uk-dropdown="" class="uk-parent">
+          <a href="">Parent</a>
+          <div class="uk-dropdown uk-dropdown-navbar">
+            <ul class="uk-nav uk-nav-navbar">
+              <li><a href="#">Item</a></li>
+              <li><a href="#">Another item</a></li>
+              <li class="uk-nav-header">Header</li>
+              <li><a href="#">Item</a></li>
+              <li><a href="#">Another item</a></li>
+              <li class="uk-nav-divider"></li>
+              <li><a href="#">Separated item</a></li>
+            </ul>
+          </div>
+        </li>
+        <li><a href="">Item</a></li>
+        <li class="uk-active"><a href="">Active</a></li>
+      </ul>
+    </div>
+  </nav>
+</template>
+ 
+<template name="hello">
+  <form id="ec-form" class="uk-form">
+    <input id="ec-perl" type="text" >
+    <select id="ec-select" >
+      <option id="ec-select-all" value="all">all</option>
+      <option id="ec-select-ec" value="eq">eq</option>
+    </select>
+    <input id="ec-perl-key" type="text" >
+    <input id="ec-perl-value" type="text" >
+    <button class="uk-button uk-button-success">Clique Aqui</button>  
+  </form>
+  
+  <!-- This is the container enabling the JavaScript -->
+  <div class="uk-button-dropdown" data-uk-dropdown>
+
+    <!-- This is the button toggling the dropdown -->
+    <button class="uk-button">EITA</button>
+
+    <!-- This is the dropdown -->
+    <div class="uk-dropdown uk-dropdown-small">
+        <ul class="uk-nav uk-nav-dropdown">
+            <li><a href="">ONE</a></li>
+            <li><a href="">TWO</a></li>
+        </ul>
+    </div>
+
+</div>  
+</template>
+
+<template name="create" >
+  <div>
+    <form id="ec-form-create-db" class="uk-form">
+      <label name="ec-label-create-db" for="ec-create-db" >DB name</label>
+      <input id="ec-create-db" type="text" class="uk-form-large">
+      <button class="button">Create Database</button>
+    </form>
+    <br><br>
+    <form id="ec-form-create" class="uk-form">
+      <label name="ec-label-db-name" for="ec-label-db-name" >DB name</label>
+      <input id="ec-db-name" type="text" class="uk-form-large">
+      <label name="ec-label-table-name" for="ec-label-table-name" >Table name</label>
+      <input id="ec-db-name" type="text" class="uk-form-large">
+      <div>
+        <label name="ec-label-conditions" for="ec-label-conditions" >Conditions</label>
+        <textarea id="ec-db-conditions" rows="6" cols="50">
+subset IdentStr of Str where /^<.ident>\$/;
+subset Gênero of Str where * eq "Homem"|"Mulher";
+subset RateTécnico where (0.0..5.0)|"-";
+subset Operator of Str where "all"|"eq"|"gt"|"lt";
+        </textarea>
+      </div>
+      <div>
+        <label name="ec-label-tables" for="ec-label-tables" >Tables</label>
+        <textarea id="ec-db-tables" rows="8" cols="50">
+class Técnico does JSON::Class \{
+  my \$.identidade = "f5dad591ca";
+  has \$.nome is required;
+  has Gênero \$.gênero is required;
+  has Int \$.idade is required;
+  has RateTécnico \$.rate is required;
+}
+        </textarea>
+      </div>
+      <div>
+        <label name="ec-label-hash-set" for="ec-label-hash-set" >Hash Values</label>
+        <textarea id="ec-db-hash-set" rows="8" cols="50">
+my \%hash-set = "f5dad591ca" => \{ "Marcelo Oliveira" => $table-hashed.new( nome=>"Marcelo Oliveira", gênero=>"Homem", idade=>49, rate=>3.88 ), 
+                                   "Levir Culpi" => $table-hashed.new( nome=>"Levir Culpi", gênero=>"Homem", idade=>52, rate=>4.12 ),
+                                   "Cuca" => $table-hashed.new( nome=>"Cuca", gênero=>"Homem", idade=>49, rate=>"-" ) }
+                                 };
+        </textarea>
+      </div>
+      <button class="button">Create Table</button>
+    </form>
+  </div>
+</template>

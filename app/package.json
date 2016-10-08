@@ -1,0 +1,20 @@
+{
+  "name": "app",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "better-spawn": "^0.3.1",
+    "child-process-promise": "~2.1.3",
+    "exec-spawn": "^1.0.1",
+    "fibers": "^1.0.14",
+    "jquery": "^3.1.1",
+    "meteor-node-stubs": "~0.2.0",
+    "spawn-async": "0.0.1",
+    "spawn-shell": "^1.1.2",
+    "spawn-sync": "^1.0.15",
+    "sync-exec": "^0.6.2",
+    "try-thread-sleep": "^1.0.0"
+  }
+}
